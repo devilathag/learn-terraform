@@ -9,7 +9,7 @@ resource "aws_instance" "frontend" {
 }
 
 resource "aws_route53_record" "frontend" {
-  zone_id = "Z0159581LHW2KQMKKCYV"
+  zone_id = data.aws_route53_zone.zone.zone_id
   name    = "frontend.gdevopsb72.online"
   type    = "A"
   ttl     = 30
@@ -27,7 +27,7 @@ resource "aws_instance" "backend" {
 }
 
 resource "aws_route53_record" "backend" {
-  zone_id = "Z0159581LHW2KQMKKCYV"
+  zone_id = data.aws_route53_zone.zone.zone_id
   name    = "backend.gdevopsb72.online"
   type    = "A"
   ttl     = 30
@@ -37,7 +37,7 @@ resource "aws_route53_record" "backend" {
 resource "aws_instance" "mysql" {
    ami           = data.aws_ami.ami.image_id
    instance_type = "t3.micro"
-   vpc_security_group_ids = [data.aws_security_group.sg.id]
+   vpc_security_group_ids = [data.aws_security_group.sg.id ]
 
    tags = {
       Name = "mysql"
@@ -45,7 +45,7 @@ resource "aws_instance" "mysql" {
 }
 
 resource "aws_route53_record" "mysql" {
-  zone_id = "Z0159581LHW2KQMKKCYV"
+  zone_id = data.aws_route53_zone.zone.zone_id
   name    = "mysql.gdevopsb72.online"
   type    = "A"
   ttl     = 30
