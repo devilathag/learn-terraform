@@ -9,5 +9,9 @@ data "aws_security_group" "sg" {
 }
 
 data "aws_route53_zone" "zone" {
-  name = "gdevopsb72.online"
+  name = var.zone_id
 }
+
+variable "zone_id" {
+  default = "gdevopsb72.online"
+  }
