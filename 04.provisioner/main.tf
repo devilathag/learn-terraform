@@ -3,3 +3,13 @@ resource "null_resource" "test" {
     command = "echo hello world"
   }
 }
+
+resource "null_resource" "test1" {
+  provisioner "local-exec" {
+    command = <<EOF
+echo hello world
+ls
+pwd
+EOF
+  }
+}
