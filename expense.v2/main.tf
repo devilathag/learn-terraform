@@ -1,9 +1,14 @@
-module "expense" {
-  count = 3
+module "frontend" {
   source = "./app-create"
-  component = var.expense[count.index]
+  component = "frontend"
 }
 
-variable "expense" {
-  default = ["frontend", "backend", "mysql"]
+module "backend" {
+  source = "./app-create"
+  component = "backend"
+}
+
+module "mysql" {
+  source = "./app-create"
+  component = "mysql"
 }
