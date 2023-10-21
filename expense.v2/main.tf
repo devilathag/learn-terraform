@@ -1,5 +1,5 @@
 module "expense" {
-  count = 3
+  count = length(var.expense)
   source = "./app-create"
   component = var.expense[count.index]
 }
